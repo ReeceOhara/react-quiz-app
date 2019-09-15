@@ -3,10 +3,10 @@ import TopicChoice from './TopicChoice';
 
 class TopicBody extends React.Component {
     render() {
-        let answers = this.props.answers;
+        let choices = this.props.choices;
         return (
-            answers.map((item) => (
-            <TopicChoice answerObj={item} handleChange={this.props.handleChange}/>
+            choices.map((item) => (
+            <TopicChoice choiceObj={item} handleChange={this.props.handleChange}/>
         ))
         );
     }

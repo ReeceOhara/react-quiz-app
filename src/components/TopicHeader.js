@@ -1,14 +1,15 @@
 import React from 'react';
+var data = require('../tempDB.json');
+
 
 class TopicHeader extends React.Component {
     render() {
-        var message = '';
-        if(this.props['subject'] === 'None'){
-            message = "Select a topic";
-        } else if(this.props.subject === 'Pre-Algebra'){
-            message = "It Works!";
-        } else {
-            message = "Question would go here";
+        var message = 'Please Select a Topic';
+        for(let i in data.topics){
+            var index = Math.floor(Math.random() * data.topics[i].questions.length);
+            if(this.props.subject.answer === data.topics[i].name){
+                message = data.topics[i].questions[index];
+            }
         }
         return (
             <h1>{message}</h1>

@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {topic: 'None',
-                answers: [{'id': 0, 'answer': 'Pre-Algebra'},{'id': 1, 'answer': 'Algebra I'},{'id': 2, 'answer': 'Algebra II'},
+                choices: [{'id': 0, 'answer': 'Pre-Algebra'},{'id': 1, 'answer': 'Algebra I'},{'id': 2, 'answer': 'Algebra II'},
                 {'id': 3, 'answer': 'Geometry'},{'id': 4, 'answer': 'Trigonometry'},{'id': 5, 'answer': 'Calculus I'}],
                 quizStarted: false,
                 selected: 'na'
@@ -21,8 +21,8 @@ class App extends React.Component {
     //Quiz hasnt started yet. User is still picking topic
     if(!this.state.quizStarted){
       this.setState({
-        topic: this.state.answers[e.target.value],
-        answers: [{'id': 0, 'answer': 'red'}, {'id': 1, 'answer': 42}, {'id': 2, 'answer': 'Yes'}],
+        topic: this.state.choices[e.target.value],
+        choices: [{'id': 0, 'answer': 'red'}, {'id': 1, 'answer': 42}, {'id': 2, 'answer': 'Yes'}],
         quizStarted: true,
         selected: e.target.value
         }, () => {
@@ -44,7 +44,7 @@ class App extends React.Component {
       <div className="App">
         <TopicHeader subject={this.state['topic']}></TopicHeader>
         <form>
-        <TopicBody answers={this.state.answers} handleChange={this.handleChange}></TopicBody>
+        <TopicBody choices={this.state.choices} handleChange={this.handleChange}></TopicBody>
         <button type="submit">Submit</button>
         </form>
       </div>
