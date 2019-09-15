@@ -3,9 +3,9 @@ import TopicChoice from './TopicChoice';
 
 class TopicBody extends React.Component {
     render() {
-        let questions = this.props.questions;
-        return questions.map((questionName) => (
-            <TopicChoice name={questionName} handleChange={this.props.handleChange}/>
+        let answers = this.props.answers;
+        return answers.map((item) => (
+            <TopicChoice key={item.id} name={item.answer} handleChange={this.props.handleChange}/>
         ));
     }
 }
