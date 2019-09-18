@@ -1,0 +1,17 @@
+ul {
+    width: 1/3vw;
+    margin-left: 40%;
+    margin-right: 40%;
+    text-align: left;
+}
+
+li {
+    background-color: rgb(77, 77, 77);
+    color: white;
+    border-bottom: black solid 2px;
+    list-style-type: none;
+}
+
+.isSelected ~ label{
+    color: blue;
+}

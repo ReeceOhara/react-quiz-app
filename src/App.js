@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import TopicHeader from './components/TopicHeader';
 import TopicBody from './components/TopicBody';
 
 class App extends React.Component {
@@ -18,33 +17,29 @@ class App extends React.Component {
 
   handleChange(e) {
     e.preventDefault();
-    //Quiz hasnt started yet. User is still picking topic
-    if(!this.state.quizStarted){
-      this.setState({
-        topic: this.state.choices[e.target.value],
-        choices: [{'id': 0, 'answer': 'red'}, {'id': 1, 'answer': 42}, {'id': 2, 'answer': 'Yes'}],
-        quizStarted: true,
-        selected: e.target.value
-        }, () => {
-          console.log(this.state);
-      });
-      //Quiz has started so only get the key of the selected answer
-    } else {
-      this.setState({selected: e.target.value}, //Need to change this so it gets key and not value
-          () => {
-            console.log(this.state);
-          });
-    }
-}
+    //Get selected choice
+    console.log(e.target.nextSibling);
+    //Send textContent to child component so we can update style
+    this.setState({
+      selected: e.target.nextSibling.textContent
+    });
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    //Check correct answer
+    //Give feedback
+    //Update question header
+    //Update choices
+  }
 
   render() {
     console.log(this.state['topic']);
     
     return (
       <div className="App">
-        <TopicHeader subject={this.state['topic']}></TopicHeader>
         <form>
-        <TopicBody choices={this.state.choices} handleChange={this.handleChange}></TopicBody>
+        <TopicBody choices={this.state.choices} onChange={this.handleChange} selectedChoice={this.state.selected}></TopicBody>
         <button type="submit">Submit</button>
         </form>
       </div>
