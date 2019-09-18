@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import TopicBody from './components/TopicBody';
+var data = require('./components/FakeData');
 
 class App extends React.Component {
   constructor(props){
@@ -27,6 +28,9 @@ class App extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
+    //If the quiz hasnt started yet, change the header to the first question
+    console.log(data);
+    //Change quiz started to true
     //Check correct answer
     //Give feedback
     //Update question header
@@ -38,8 +42,10 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <form>
-        <TopicBody choices={this.state.choices} onChange={this.handleChange} selectedChoice={this.state.selected}></TopicBody>
+        <form onSubmit={this.handleSubmit}>
+        <TopicBody choices={this.state.choices}
+         onChange={this.handleChange}
+        selectedChoice={this.state.selected}></TopicBody>
         <button type="submit">Submit</button>
         </form>
       </div>
