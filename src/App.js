@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import TopicBody from './components/TopicBody';
-var data = require('./components/FakeData');
+var data = require('./components/FakeData').default.questionList;
 
 class App extends React.Component {
   constructor(props){
@@ -14,6 +14,7 @@ class App extends React.Component {
                 selected: 'na'
                 };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -28,8 +29,18 @@ class App extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    //If the quiz hasnt started yet, change the header to the first question
-    console.log(data);
+    //If the quiz hasnt started yet, change the header to the first question:
+
+    //Search through data and look for the answer the user selected
+    //Also gets random question from data
+    for(let i in data){
+      if(data[i].name === this.state.selected){
+        console.log(data[i].name);
+        let rand = Math.floor((Math.random() * data.length));
+        console.log(data[i].questions[rand]);
+      }
+      break;
+    }
     //Change quiz started to true
     //Check correct answer
     //Give feedback
