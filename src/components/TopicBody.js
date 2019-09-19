@@ -9,10 +9,11 @@ class TopicBody extends React.Component {
     render() {
         let choices = this.props.choices;
         let selected = this.props.selectedChoice;
+        let question = this.props.question;
 
         return (
             <div className="question-body">
-                <h1>Select a topic</h1>
+                <h1>{selected !== 'na' ? question : 'Select a topic'}</h1>
                 <ul>
                     {choices.map((item) => (
                         <li key={item.id}>
